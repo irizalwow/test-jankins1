@@ -1,0 +1,97 @@
+<aura:component controller="PruebasNumero1" implements="flexipage:availableForAllPageTypes,force:hasRecordId,force:lightningQuickActionWithoutHeader">
+    
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="recordTypeId" type="String" default="none"/>
+    <aura:attribute name="idAlternativo" type="String" default="none"/>
+    <aura:attribute name="typeForm" type="String" default="CREATE"/>
+    <aura:attribute name="buffer" type="String" default="all"/>
+    <aura:attribute name="apiName" type="String" default="Account"/>
+    <aura:attribute name="fieldSet" type="String" />
+    <aura:attribute name="fieldSetLista" type="String[]"/>
+    <aura:attribute name="object" type="sObject" />
+    <aura:attribute name="arrayBuffer" type="String[]"/>
+    <aura:attribute name="pruebas" type="sObject[]"/>
+    <aura:attribute name="auraArray" type="Aura.Component[]"/>
+    <aura:attribute name="auraArray0" type="Aura.Component[]"/>
+    <aura:attribute name="tam" type="Integer"/>
+    <aura:attribute name="visible" type="boolean" default="false"/>
+    <aura:attribute name="columnas" type="Integer" default="1"/>
+    
+    <aura:handler name="finbucle" event="c:EventFinBucle" action="{!c.prueba}"/>
+    
+    <aura:handler name="change" value="{!v.apiName}" action="{!c.apiNameChange}"/>
+    <aura:handler name="change" value="{!v.buffer}" action="{!c.bufferChange}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <aura:registerEvent name="finbucle" type="c:EventFinBucle"/>
+    
+    
+    <lightning:card title="{!'Create new' + v.apiName}" iconName="custom:custom58" >
+        
+        <aura:if isTrue="{!v.visible}" >
+            <aura:if isTrue="{!v.typeForm=='CREATE'}">
+                <aura:if isTrue="{!v.recordTypeId=='none'}">
+                <lightning:recordEditForm objectApiName="{!v.apiName}" onsubmit="{!c.handleOnSubmit}" onerror="{!c.handleOnError}" aura:id="myForm">
+                    <lightning:layout horizontalAlign="center"  multipleRows="true">
+                        <aura:iteration items="{!v.pruebas}" var="item">
+                            <lightning:layoutItem size="{!v.tam}" padding="horizontal-medium" >
+                                {!item}
+                            </lightning:layoutItem>
+                        </aura:iteration>
+                    </lightning:layout>
+                </lightning:recordEditForm> 
+                    <aura:set attribute="else">
+                        <lightning:recordEditForm objectApiName="{!v.apiName}" recordTypeId="{!v.recordTypeId}" onsubmit="{!c.handleOnSubmit}" onerror="{!c.handleOnError}" aura:id="myForm">
+                    <!--<lightning:layout horizontalAlign="center"  multipleRows="true">
+                        <aura:iteration items="{!v.pruebas}" var="item">
+                            <lightning:layoutItem size="{!v.tam}" padding="horizontal-medium" >
+                                {!item}
+                            </lightning:layoutItem>
+                        </aura:iteration>
+                    </lightning:layout>-->
+                </lightning:recordEditForm> 
+                        </aura:set>
+                    </aura:if> 
+            </aura:if>
+            
+            <aura:if isTrue="{!v.typeForm=='EDIT'}">
+                <aura:if isTrue="{!v.recordTypeId=='none'}">
+                    <lightning:recordEditForm objectApiName="{!v.apiName}" recordId="{!v.recordId}" onsubmit="{!c.handleOnSubmit}" onerror="{!c.handleOnError}" aura:id="myForm">
+                        <lightning:layout horizontalAlign="center"  multipleRows="true">  
+                            <aura:iteration items="{!v.pruebas}" var="item">
+                                <lightning:layoutItem size="{!v.tam}" padding="horizontal-medium" >
+                                    {!item}
+                                </lightning:layoutItem>
+                            </aura:iteration>
+                        </lightning:layout>
+                    </lightning:recordEditForm>
+                    <aura:set attribute="else">
+                        <lightning:recordEditForm objectApiName="{!v.apiName}" recordTypeId="{!v.recordTypeId}" recordId="{!v.recordId}" onsubmit="{!c.handleOnSubmit}" onerror="{!c.handleOnError}" aura:id="myForm">
+                            {!v.recordTypeId}
+                            <!--<lightning:layout horizontalAlign="center"  multipleRows="true">  
+                               <aura:iteration items="{!v.pruebas}" var="item">
+                                    <lightning:layoutItem size="{!v.tam}" padding="horizontal-medium" >
+                                        {!item}
+                                    </lightning:layoutItem>
+                                </aura:iteration>
+                            </lightning:layout>-->
+                        </lightning:recordEditForm>
+                    </aura:set>
+                </aura:if>   
+            </aura:if>
+            
+            <aura:if isTrue="{!v.typeForm=='VIEW'}">
+                <lightning:recordViewForm objectApiName="{!v.apiName}" recordId="{!v.recordId}" aura:id="myForm">
+                    <lightning:layout horizontalAlign="center"  multipleRows="true">
+                        <aura:iteration items="{!v.pruebas}" var="item">
+                            <lightning:layoutItem size="{!v.tam}" padding="horizontal-medium" >
+                                {!item}
+                            </lightning:layoutItem>
+                        </aura:iteration>
+                    </lightning:layout>
+                </lightning:recordViewForm> 
+            </aura:if>
+        </aura:if>
+    </lightning:card>
+    
+</aura:component>

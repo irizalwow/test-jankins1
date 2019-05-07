@@ -1,0 +1,7 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId,force:lightningQuickActionWithoutHeader">
+	<lightning:recordForm
+        recordTypeId="0121i000000CzXHAA0"
+        objectApiName="Account"
+        layoutType="Full"
+        mode="edit" />
+</aura:component>

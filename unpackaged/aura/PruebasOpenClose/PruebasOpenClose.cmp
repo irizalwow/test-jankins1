@@ -1,0 +1,7 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId,force:lightningQuickActionWithoutHeader">
+	
+        <lightning:utilityBarAPI aura:id="utilitybar" />
+    	<lightning:workspaceAPI aura:id="workspace"/>
+    
+    <lightning:button label="pulsa" onclick="{!c.utilidad}"/>
+</aura:component>

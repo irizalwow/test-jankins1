@@ -1,0 +1,11 @@
+<aura:component>
+        <aura:attribute name="auraArray" type="Aura.Component[]" />
+        <aura:attribute name="tam" type="Integer" required="true"/>
+        <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+        <lightning:layoutItem size="{!v.tam}" padding="horizontal-medium" >
+                                       <aura:iteration items="{!v.auraArray}" var="item"> 
+                                                {!item}
+                                       </aura:iteration> 
+        </lightning:layoutItem> 
+</aura:component>
