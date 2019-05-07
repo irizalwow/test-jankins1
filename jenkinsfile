@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'sfdx force:org:list'
+                echo 'Building...'
+                
             }
         }
         stage('Test') {
