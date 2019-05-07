@@ -5,8 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
-                sfdx
-                bat 'sfdx force:org:list'
+                powershell 'java -version' 
+                powershell 'sfdx force:org:list'
             }
         }
         stage('Test') {
