@@ -1,2 +1,0 @@
-<aura:event type="COMPONENT" description="Cierra el modal de la clase padre">
-    </aura:event>
