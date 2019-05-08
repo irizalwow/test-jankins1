@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
-                bat 'echo Hola Mundo QUE TAL ESTAMOS' 
+                bat 'sfdx' 
                 // powershell 'sfdx force:org:list'
             }
         }
