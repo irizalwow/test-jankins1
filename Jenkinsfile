@@ -15,8 +15,12 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
-                echo 'Deploying....'
+                emailext attachmentsPattern: attachPatternStr, 
+                body: "test",
+                mimeType: 'text/html',
+                subject: "test",
+                to: "aredondof@viewnext.com",
+                from: "jcordero@viewnext.com"
             }
         }
     }
