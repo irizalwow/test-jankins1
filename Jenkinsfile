@@ -19,11 +19,5 @@ pipeline {
                 echo 'Deploying....'
             }
         }
-        post {
-            always {
-                echo 'Sending....'
-                emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
-            }
-        }
     }
 }
