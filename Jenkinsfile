@@ -15,12 +15,13 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                emailext attachmentsPattern: attachPatternStr, 
-                body: "test",
-                mimeType: 'text/html',
-                subject: "test",
-                to: "aredondof@viewnext.com",
-                from: "jcordero@viewnext.com"
+                echo 'Deploy..'
+            //     emailext attachmentsPattern: attachPatternStr, 
+            //     body: "test",
+            //     mimeType: 'text/html',
+            //     subject: "test",
+            //     to: "aredondof@viewnext.com",
+            //     from: "jcordero@viewnext.com"
             }
         }
     }
