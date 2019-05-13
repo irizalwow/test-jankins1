@@ -4,11 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo "Building.. ${TEST}"
-                echo 'Building.. %TEST%' 
-                echo 'Building.. %TEST' 
-                echo "ENVIRONMENT: ${TEST}"
-                echo "TEST: %TEST%"
+                echo "Building.. ${BRANCH}"
                 // powershell 'sfdx force:org:list'
             }
         }
