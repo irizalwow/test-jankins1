@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        echo "HOLA ESTAMOS AQUI BUILDEANDO"
+        echo 'HOLA ESTAMOS AQUI BUILDEANDO'
+        sh 'mkdir holaCaracola'
       }
     }
     stage('Test') {
